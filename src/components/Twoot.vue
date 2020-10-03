@@ -55,12 +55,11 @@ export default {
     .twoot-item__content {
         margin-top: 5px;
     }
-
-    .twoot-item:first-of-type {
-    margin-top: 0;
-    }
 }
 
+.twoot-item:first-of-type {
+    margin-top: 0;
+}
 
 
 

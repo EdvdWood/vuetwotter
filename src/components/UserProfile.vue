@@ -109,11 +109,12 @@ export default {
         padding: 0 10px;
         margin-bottom: 5px;
     }
-    .user-profile__twoots-wrapper {
-      display: grid;
-      grid-gap: 10px;
-      margin-bottom: auto;
-    }
+      .user-profile__twoots-wrapper {
+        display: grid;
+        grid-gap: 0px;
+        margin-bottom: auto;
+
+      }
   }
 }
 
