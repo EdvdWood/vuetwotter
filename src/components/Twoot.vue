@@ -35,7 +35,7 @@ export default {
 
 <style>
 .twoot-item {
-    padding: 20px;
+    padding: 15px 15px 15px 15px;
     margin: 5px 0;
     background-color: white;
     border-radius: 5px;
@@ -57,4 +57,7 @@ export default {
     font-weight: bold;
 }
 
+.twoot-item__content {
+    margin-top: 5px;
+}
 </style>
