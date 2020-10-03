@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .twoot-item {
     padding: 15px 15px 15px 15px;
     margin: 5px 0;
@@ -43,21 +43,25 @@ export default {
     box-sizing: border-box;
     cursor: pointer;
     transition: all 0.25s ease;
-}
 
-.twoot-item:first-of-type {
-    margin: 0;
-}
-
-.twoot-item:hover {
+    &:hover {
     transform: scale(1.08, 1.1);
-}
+    }
 
-.twoot-item__user {
+    .twoot-item__user {
     font-weight: bold;
+    }
+
+    .twoot-item__content {
+        margin-top: 5px;
+    }
+
+    .twoot-item:first-of-type {
+    margin-top: 0;
+    }
 }
 
-.twoot-item__content {
-    margin-top: 5px;
-}
+
+
+
 </style>
