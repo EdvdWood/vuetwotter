@@ -2,28 +2,28 @@
   <div class="user-profile">
     <div class="user-profile__sidebar">
       <div class="user-profile__user-panel">
-        <h1 class="user-profile__username">    @{{ user.username }} </h1>
-        <div class="user-profile__admin-badge" v-if="user.isAdmin"> 
+        <h1 class="user-profile__username">    @{{ state.user.username }} </h1>
+        <div class="user-profile__admin-badge" v-if="state.user.isAdmin"> 
           admin 
         </div>
         <div class="user-profile__follower-count">
-          <strong>Followers: </strong> {{ followers }}
+          <strong>Followers: </strong> {{ state.followers }}
         </div>
       </div>
       <CreateTwootPanel @add-twoot="addTwoot"/>
       </div>
       <div class="user-profile__twoots-wrapper">
         <Twoot 
-            v-for="twoot in user.twoots" 
+            v-for="twoot in state.user.twoots" 
             :key="twoot.id" 
-            :username="user.username" 
+            :username="state.user.username" 
             :twoot="twoot" 
-            @favourite="toggleFavourite"
         />
       </div>
   </div>  
 </template>
 <script>
+import { reactive } from 'vue';
 import Twoot from "./Twoot";
 import CreateTwootPanel from "./CreateTwootPanel";
 
@@ -31,9 +31,9 @@ import CreateTwootPanel from "./CreateTwootPanel";
 export default {
   name: 'UserProfile',
   components: { CreateTwootPanel, Twoot },
-  data() {
-    return {
-      followers: 0,
+  setup() {
+    const state = reactive({
+      followers:0,
       user: {
         id: 1,
         username: "EdWoods",
@@ -47,38 +47,21 @@ export default {
           { id: 3, content: "I'm a mastertwooter"},
         ],
       }
-    }
-  },
-  watch: {
-    followers(newFollowerCount, oldFollowerCount) {
-      if (oldFollowerCount < newFollowerCount) {
-        console.log(`${this.user.username} has gained a follower!`)
-      }
-    }
-  },
-  computed: {
-    fullName() {
-      return `${this.user.firstName} ${this.user.lastName}`
-    }
-  },
-  methods: {
-    followUser() {
-      this.followers++
-    },
-    toggleFavourite(id) {
-      console.log(`Favourited Tweet ${id}`)
-    },
-    addTwoot(twoot) {
-        this.user.twoots.unshift( {
-        id: this.user.twoots.length + 1,
+    })
+
+    function addTwoot(twoot) {
+        state.user.twoots.unshift( {
+        id: state.user.twoots.length + 1,
         content: twoot,
-        })
-      }
-    },
-  mounted() {
-    this.followUser();
-  }
-}
+        });
+    }
+
+    return {
+      state,
+      addTwoot
+    }
+  }  
+};
 </script>
 
 <style lang="scss" scoped>

@@ -24,11 +24,6 @@ export default {
             type: Object,
             required: true,
         }
-    },
-    methods: {
-        favouriteTwoot(id) {
-            this.$emit('favourite', id)
-        }
     }
 };
 </script>
@@ -45,7 +40,7 @@ export default {
     transition: all 0.25s ease;
 
     &:hover {
-    transform: scale(1.08, 1.1);
+    transform: scale(1.09, 1.1);
     }
 
     .twoot-item__user {
